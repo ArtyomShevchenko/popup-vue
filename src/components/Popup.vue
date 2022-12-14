@@ -1,11 +1,12 @@
 <template>
-    <div class="popup-container" v-if="isOpen" @click.self="close">
-        <!-- <div class=" poput-inner" @click.capture="open"> -->
-        <div class=" poput-inner">
-            <slot></slot>
-            <button @click="close">Close</button>
+    <!-- <transition name="animate" > -->
+        <div v-motion-fade class="popup-container modal" v-if="isOpen" @click.self="close">
+            <div class="poput-inner bg-warning">
+                <slot></slot>
+                <button class="btn btn-close align-self-end" @click="close">Close</button>
+            </div>
         </div>
-    </div>
+    <!-- </transition> -->
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
             if (value) {
                 document.querySelector("body").classList.add("hidden-scroll")
             }
-
+            
             if (!value) {
                 document.querySelector("body").classList.remove("hidden-scroll")
             }
